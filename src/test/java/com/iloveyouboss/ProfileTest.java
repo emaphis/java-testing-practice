@@ -36,11 +36,35 @@ public class ProfileTest {
         assertFalse(matches);
     }
 
+
+    @Test
+    public void matchAnswersTrueWhenMustMatchCriteriaNotMet() {
+        profile.add(new Answer(question, Bool.TRUE));
+        criteria.add(
+                new Criterion(new Answer(question, Bool.TRUE), Weight.MustMatch));
+
+        boolean matches = profile.matches(criteria);
+
+        assertTrue(matches);
+    }
+
+
     @Test
     public void matchAnswersTrueForAnyDontCareCriteria() {
         profile.add(new Answer(question, Bool.FALSE));
         criteria.add(
                 new Criterion(new Answer(question, Bool.TRUE), Weight.DontCare));
+
+        boolean matches = profile.matches(criteria);
+
+        assertTrue(matches);
+    }
+ 
+    @Test
+    public void matchAnswersFalseForAnyDontCareCriteria() {
+        profile.add(new Answer(question, Bool.FALSE));
+        criteria.add(
+                new Criterion(new Answer(question, Bool.FALSE), Weight.DontCare));
 
         boolean matches = profile.matches(criteria);
 
