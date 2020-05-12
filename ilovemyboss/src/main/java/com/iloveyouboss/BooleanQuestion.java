@@ -3,8 +3,6 @@
  */
 package com.iloveyouboss;
 
-import com.iloveyouboss.Question;
-
 /**
  *
  * @author emaphis

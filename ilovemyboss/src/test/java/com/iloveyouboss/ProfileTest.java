@@ -1,19 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.iloveyouboss;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Before;
 
-/**
- *
- * @author emaphis
- */
 public class ProfileTest {
+
     private Profile profile;
     private BooleanQuestion question;
     private Criteria criteria;
@@ -23,6 +15,28 @@ public class ProfileTest {
         profile = new Profile("Bull Hockey, Inc.");
         question = new BooleanQuestion(1, "Got bonuses?");
         criteria = new Criteria();
+    }
+
+    @Test
+    public void matches() {
+        Profile profile = new Profile("Bull Hockey, Inc.");
+        Question question = new BooleanQuestion(1, "Got milk?");
+
+        // answers false when must-match criteria not met
+        profile.add(new Answer(question, Bool.FALSE));
+        Criteria criteria = new Criteria();
+        criteria.add(
+                new Criterion(new Answer(question, Bool.TRUE), Weight.MustMatch));
+
+        assertFalse(profile.matches(criteria));
+
+        // answers true for any don't care criteria
+        profile.add(new Answer(question, Bool.FALSE));
+        criteria = new Criteria();
+        criteria.add(
+                new Criterion(new Answer(question, Bool.TRUE), Weight.DontCare));
+
+        assertTrue(profile.matches(criteria));
     }
 
     @Test
@@ -36,19 +50,6 @@ public class ProfileTest {
         assertFalse(matches);
     }
 
-
-    @Test
-    public void matchAnswersTrueWhenMustMatchCriteriaNotMet() {
-        profile.add(new Answer(question, Bool.TRUE));
-        criteria.add(
-                new Criterion(new Answer(question, Bool.TRUE), Weight.MustMatch));
-
-        boolean matches = profile.matches(criteria);
-
-        assertTrue(matches);
-    }
-
-
     @Test
     public void matchAnswersTrueForAnyDontCareCriteria() {
         profile.add(new Answer(question, Bool.FALSE));
@@ -59,7 +60,8 @@ public class ProfileTest {
 
         assertTrue(matches);
     }
- 
+
+
     @Test
     public void matchAnswersFalseForAnyDontCareCriteria() {
         profile.add(new Answer(question, Bool.FALSE));
@@ -70,4 +72,5 @@ public class ProfileTest {
 
         assertTrue(matches);
     }
+
 }

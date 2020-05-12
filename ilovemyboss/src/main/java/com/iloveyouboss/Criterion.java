@@ -23,7 +23,5 @@ public class Criterion implements Scoreable {
     public void setScore(int score) { this.score = score; }
 
     @Override
-    public int getScore() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    public int getScore() { return score; }
 }
