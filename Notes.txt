@@ -1,2 +1,4 @@
 Notes:
 
+Per test:
+Arrange, Act, and Assert Your Way to a Test
