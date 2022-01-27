@@ -36,7 +36,7 @@ class Account {
         return balance > 0;
     }
 
-    private static class InsufficientFundsException extends RuntimeException {
+    public static class InsufficientFundsException extends RuntimeException {
 
         private static final long serialVersionUID = 1L;
 
