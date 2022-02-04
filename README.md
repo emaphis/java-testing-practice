@@ -17,3 +17,7 @@ Project:  iloveyouboss01
 ### Chapter 2: Getting Real with JUnit
 
 Projects:  iloveyouboss06
+
+### Junit 5 testing
+
+Project: junit5-project
