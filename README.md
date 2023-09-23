@@ -18,6 +18,14 @@ Project:  iloveyouboss01
 
 Projects:  iloveyouboss06
 
-### Junit 5 testing
+## Junit 5 testing
 
 Project: junit5-project
+
+./junit5-project
+
+## "Agile Java" also by Jeff Langr
+
+projects are in
+
+./agile-java
