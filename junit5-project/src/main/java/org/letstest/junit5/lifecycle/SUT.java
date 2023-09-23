@@ -5,7 +5,7 @@ package org.letstest.junit5.lifecycle;
  *  System Under Test
  * @author emaph
  */
-class SUT {
+public class SUT {
     private String systemName;
 
     public SUT(String systemName) {
