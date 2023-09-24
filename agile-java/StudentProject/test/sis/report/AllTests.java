@@ -1,6 +1,5 @@
-package studentinfo;
 
-
+package sis.report;
 
 import junit.framework.TestSuite;
 
@@ -8,12 +7,11 @@ import junit.framework.TestSuite;
  *
  * @author emaph
  */
-public class AllTests {
+public class AllTests extends TestSuite {
+
     public static TestSuite suite() {
         TestSuite suite = new TestSuite();
-        suite.addTestSuite(StudentTest.class);
-        suite.addTestSuite(CourseSessionTest.class);
+        suite.addTestSuite(RosterReporterTest.class);
         return suite;
     }
-    
 }

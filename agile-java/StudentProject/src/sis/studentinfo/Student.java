@@ -1,10 +1,4 @@
-package studentinfo;
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+package sis.studentinfo;
 
 /**
  *
@@ -12,7 +6,7 @@ package studentinfo;
  */
 public class Student {
     private final String name;
-    
+
     /**
      * Creates a Student given a name.
      * @param name of student
@@ -25,8 +19,7 @@ public class Student {
      * Returns Student name;
      * @return name of Student
      */
-    String getName() {
+    public String getName() {
         return name;
     }
-    
 }

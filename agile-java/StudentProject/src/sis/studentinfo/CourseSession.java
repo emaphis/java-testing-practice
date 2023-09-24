@@ -1,4 +1,4 @@
-package studentinfo;
+package sis.studentinfo;
 
 import java.util.*;
 
@@ -7,7 +7,8 @@ import java.util.*;
  * session of a specific university course
  * @author emaph
  */
-class CourseSession {
+public class CourseSession {
+
     private String department;
     private String number;
     private ArrayList<Student> students = new ArrayList<Student>();
@@ -15,12 +16,12 @@ class CourseSession {
 
     /**
      * Constructs a CourseSession starting on a specific date
-     * 
+     *
      * @param department the department number
      * @param number the Section number
-     * @param startDate the date on which the CourseSession begins 
+     * @param startDate the date on which the CourseSession begins
      */
-    CourseSession(String department, String number, Date startDate) {
+    public CourseSession(String department, String number, Date startDate) {
         this.department = department;
         this.number = number;
         this.startDate = startDate;
@@ -30,6 +31,10 @@ class CourseSession {
         return department;
     }
 
+    /**
+     * Return the session number
+     * @return session number
+     */
     public String getNumber() {
         return number;
     }
@@ -38,18 +43,35 @@ class CourseSession {
         return students.size();
     }
 
-    void enroll(Student student) {
+    /**
+     * Enroll a Student in the course session
+     * @param student enrolled
+     */
+    public void enroll(Student student) {
         students.add(student);
     }
 
+    /**
+     * Return the student given an index
+     * @param i the index
+     * @return  the Student
+     */
     public Student getStudent(int i) {
         return students.get(i);
     }
 
+    /**
+     * Return the start date of the session
+     * @return startDate
+     */
     public Date getStartDate() {
         return startDate;
     }
-    
+
+    /**
+     * Return the end date of the session.
+     * @return endDate
+     */
     public Date getEndDate() {
         GregorianCalendar calendar = new GregorianCalendar();
         calendar.setTime(startDate);
