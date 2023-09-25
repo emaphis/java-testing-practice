@@ -7,13 +7,13 @@
 package sis.report;
 
 import sis.studentinfo.CourseSession;
+import static sis.report.ReportConstant.NEWLINE;
 
 /**
  *
  * @author emaph
  */
 class RosterReporter {
-    public static final String NEWLINE = System.getProperty("line.separator");
     public static final String ROSTER_REPORT_HEADER = "Student" + NEWLINE + "----" + NEWLINE;
     public static final String ROSTER_REPORT_FOOTER = NEWLINE + "# students";
     CourseSession session;
@@ -37,13 +37,14 @@ class RosterReporter {
     void writeBody(StringBuilder buffer) {
         for (int i = 0; i < session.getNumberOfStudents(); i++) {
             buffer.append(session.getStudent(i).getName());
-            buffer.append(RosterReporter.NEWLINE);
+            buffer.append(NEWLINE);
         }
     }
 
     void writeFooter(StringBuilder buffer) {
         buffer.append(RosterReporter.ROSTER_REPORT_FOOTER);
         buffer.append(session.getNumberOfStudents());
+        buffer.append(NEWLINE);
     }
 
 }

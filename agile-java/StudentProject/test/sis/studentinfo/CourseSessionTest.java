@@ -10,10 +10,10 @@ import junit.framework.TestCase;
  */
 public class CourseSessionTest extends TestCase {
 
+    private static final int CREDITS = 3;
+
     CourseSession session1;
     CourseSession session2;
-    Student student1;
-    Student student2;
     Date startDate;
 
     public CourseSessionTest(String testName) {
@@ -23,10 +23,8 @@ public class CourseSessionTest extends TestCase {
     @Override
     public void setUp() {
         startDate = DateUtil.createDate(2003, 1, 6);
-        session1 = new CourseSession("ENGL", "101", startDate);
-        session2 = new CourseSession("MATH", "102", startDate);
-        student1 = new Student("Cain DiVoe");
-        student2 = new Student("Coralee DeVaughn");
+        session1 = createCourseSession();
+        session2 = CourseSession.create("MATH", "102", startDate);
     }
 
     public void testCreate() {
@@ -42,11 +40,15 @@ public class CourseSessionTest extends TestCase {
     public void testEnrollStudents() {
         assertEquals(0, session1.getNumberOfStudents());
 
+        Student student1 = new Student("Cain DiVoe");
         session1.enroll(student1);
+        assertEquals(CREDITS, student1.getCredits());
         assertEquals(1, session1.getNumberOfStudents());
         assertEquals(student1, session1.getStudent(0));
 
+        Student student2 = new Student("Coralee DeVaughn");
         session1.enroll(student2);
+        assertEquals(CREDITS, student2.getCredits());
         assertEquals(2, session1.getNumberOfStudents());
         assertEquals(student1, session1.getStudent(0));
         assertEquals(student2, session1.getStudent(1));
@@ -55,5 +57,19 @@ public class CourseSessionTest extends TestCase {
     public void testCourseDates() {
         Date sixteenWeeksOut = DateUtil.createDate(2003, 4, 25);
         assertEquals(sixteenWeeksOut, session1.getEndDate());
+    }
+
+    public void testCourseCount() {
+        CourseSession.resetCount();
+        createCourseSession();
+        assertEquals(1, CourseSession.getCount());
+        createCourseSession();
+        assertEquals(2, CourseSession.getCount());
+    }
+
+    private CourseSession createCourseSession() {
+        CourseSession session = CourseSession.create("ENGL", "101", startDate);
+        session.setNumberOfCredits(CREDITS);
+        return session;
     }
 }

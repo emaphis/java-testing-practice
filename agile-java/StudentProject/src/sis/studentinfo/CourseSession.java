@@ -10,9 +10,11 @@ import java.util.*;
 public class CourseSession {
 
     private String department;
-    private String number;
+    private String CourseNumber;
+    private int numberOfCredits;
     private ArrayList<Student> students = new ArrayList<Student>();
     private Date startDate;
+    private static int count;
 
     /**
      * Constructs a CourseSession starting on a specific date
@@ -21,10 +23,20 @@ public class CourseSession {
      * @param number the Section number
      * @param startDate the date on which the CourseSession begins
      */
-    public CourseSession(String department, String number, Date startDate) {
+   private CourseSession(String department, String number, Date startDate) {
         this.department = department;
-        this.number = number;
+        this.CourseNumber = number;
         this.startDate = startDate;
+    }
+
+    public static CourseSession create(String department, String number, Date startDate) {
+
+        CourseSession.incrementCount();
+        return new CourseSession(department, number, startDate);
+    }
+
+    void setNumberOfCredits(int numberOfCredits) {
+        this.numberOfCredits = numberOfCredits;
     }
 
     public String getDepartment() {
@@ -36,7 +48,7 @@ public class CourseSession {
      * @return session number
      */
     public String getNumber() {
-        return number;
+        return CourseNumber;
     }
 
     public int getNumberOfStudents() {
@@ -48,6 +60,7 @@ public class CourseSession {
      * @param student enrolled
      */
     public void enroll(Student student) {
+        student.addCredits(numberOfCredits);
         students.add(student);
     }
 
@@ -80,4 +93,19 @@ public class CourseSession {
         return calendar.getTime();
     }
 
+    /**
+     * Return the count of the sessions.
+     * @return
+     */
+    public static int getCount() {
+        return count;
+    }
+
+    static void resetCount() {
+        count = 0;
+    }
+
+    private static void incrementCount() {
+        count++;
+    }
 }
