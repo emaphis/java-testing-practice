@@ -6,15 +6,18 @@ package piece;
  */
 public class Pawn {
     private String color;
+    private char representation;
     static public final String WHITE = "white";
     static public final String BLACK = "black";
-    
+
     /**
      * Create a Pawn of a given color
-     * @param color 
+     * @param color
+     * @param  representation char representation of he board.
      */
-    public Pawn(String color) {
+    public Pawn(String color, char representation) {
         this.color = color;
+        this.representation = representation;
     }
 
     /**
@@ -22,14 +25,18 @@ public class Pawn {
      */
     public Pawn() {
         this.color = WHITE;
+        this.representation = 'p';
     }
 
     /**
      * Get Pawn's color
-     * @return 
+     * @return
      */
-    String getColor() {
+    public String getColor() {
         return color;
     }
-    
+
+    public char getRepresentation() {
+        return representation;
+    }
 }

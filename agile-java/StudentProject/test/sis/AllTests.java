@@ -1,4 +1,4 @@
-package sis;
+    package sis;
 
 import junit.framework.TestSuite;
 

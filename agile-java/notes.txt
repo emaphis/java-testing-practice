@@ -1,0 +1,4 @@
+Agile Java: Crafting Code with Test-Driven Development
+by Jeff Langr
+Just some notes:
+pg. 156
