@@ -1,6 +1,6 @@
 package board;
 
-import piece.Pawn;
+import piece.Piece;
 import junit.framework.TestCase;
 
 /**

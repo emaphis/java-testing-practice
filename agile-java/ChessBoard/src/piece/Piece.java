@@ -4,7 +4,7 @@ package piece;
  * Represents a Pawn Piece on a Board of chess.
  * @author emaph
  */
-public class Pawn {
+public class Piece {
     private String color;
     private char representation;
     static public final String WHITE = "white";
@@ -15,7 +15,7 @@ public class Pawn {
      * @param color
      * @param  representation char representation of he board.
      */
-    public Pawn(String color, char representation) {
+    public Piece(String color, char representation) {
         this.color = color;
         this.representation = representation;
     }
@@ -23,7 +23,7 @@ public class Pawn {
     /**
      * Create a white Pawn
      */
-    public Pawn() {
+    public Piece() {
         this.color = WHITE;
         this.representation = 'p';
     }

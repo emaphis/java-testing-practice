@@ -18,7 +18,7 @@ public class AllTests extends TestSuite {
     
     public static TestSuite suite() {
         TestSuite suite = new TestSuite();
-        suite.addTestSuite(PawnTest.class);
+        suite.addTestSuite(PieceTest.class);
         suite.addTestSuite(BoardTest.class);
         return suite;
     }

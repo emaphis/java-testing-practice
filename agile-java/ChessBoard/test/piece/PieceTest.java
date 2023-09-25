@@ -12,27 +12,27 @@ import junit.framework.TestCase;
  *
  * @author emaph
  */
-public class PawnTest extends TestCase {
+public class PieceTest extends TestCase {
 
     protected void setUp() throws Exception {
     }
 
     public void testCreate() {
-        Pawn whitePawn = new Pawn(Pawn.WHITE, 'p');
-        assertEquals(Pawn.WHITE, whitePawn.getColor());
+        Piece whitePawn = new Piece(Piece.WHITE, 'p');
+        assertEquals(Piece.WHITE, whitePawn.getColor());
 
-        Pawn blackPawn = new Pawn(Pawn.BLACK, 'P');
-        assertEquals(Pawn.BLACK, blackPawn.getColor());
+        Piece blackPawn = new Piece(Piece.BLACK, 'P');
+        assertEquals(Piece.BLACK, blackPawn.getColor());
     }
 
     public void testPawn() {
-        Pawn pawn = new Pawn();
-        assertEquals(Pawn.WHITE, pawn.getColor());
+        Piece pawn = new Piece();
+        assertEquals(Piece.WHITE, pawn.getColor());
     }
 
     public void testPawnPrintRepresentation() {
-        Pawn whitePawn = new Pawn();
-        Pawn blackPawn = new Pawn(Pawn.BLACK,'P' );
+        Piece whitePawn = new Piece();
+        Piece blackPawn = new Piece(Piece.BLACK,'P' );
         assertEquals('P', blackPawn.getRepresentation());
         assertEquals('p', whitePawn.getRepresentation());
     }
