@@ -2,6 +2,7 @@ package board;
 
 import piece.Piece;
 import junit.framework.TestCase;
+import util.StringUtil;
 
 /**
  *
@@ -50,15 +51,16 @@ public class BoardTest extends TestCase {
     public void testBoardRepresentaion() {
         board.initialize();
         String given = board.getBoadRepresentation();
-        String expected
-                = "........\n"
-                + "PPPPPPPP\n"
-                + "........\n"
-                + "........\n"
-                + "........\n"
-                + "........\n"
-                + "pppppppp\n"
-                + "........\n";
+        String expected = "";
+        expected += StringUtil.appendNewLine("........")
+                + StringUtil.appendNewLine("PPPPPPPP")
+                + StringUtil.appendNewLine("........")
+                + StringUtil.appendNewLine("........")
+                + StringUtil.appendNewLine("........")
+                + StringUtil.appendNewLine("........")
+                + StringUtil.appendNewLine("pppppppp")
+                + StringUtil.appendNewLine("........");
+
         assertEquals(expected, given);
         System.out.println(given);
     }

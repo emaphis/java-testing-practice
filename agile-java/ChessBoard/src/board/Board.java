@@ -8,6 +8,7 @@ package board;
 
 import piece.Piece;
 import java.util.ArrayList;
+import util.StringUtil;
 
 /**
  * Represents the board in a game of chess
@@ -21,12 +22,12 @@ public class Board {
     public void initialize() {
         // Add 8 white Pawns to rank 2
         for (int i = 0; i < 8; i++) {
-            addPieceRank2(new Piece());
+            addPieceRank2(Piece.createPiece(Piece.WHITE, Piece.PAWN));
         }
 
         // add 8 black Pawns to rank 7
         for (int i = 0; i < 8; i++) {
-            addPieceRank7(new Piece(Piece.BLACK, 'P'));
+            addPieceRank7(Piece.createPiece(Piece.BLACK, Piece.PAWN));
         }
     }
 
@@ -86,24 +87,17 @@ public class Board {
     }
 
     public String getBoadRepresentation() {
-        StringBuilder builder = new StringBuilder();
-        builder.append(getEmptyRank());
-        builder.append('\n');
-        builder.append(getRank7());
-        builder.append('\n');
-        builder.append(getEmptyRank());
-        builder.append('\n');
-        builder.append(getEmptyRank());
-        builder.append('\n');
-        builder.append(getEmptyRank());
-        builder.append('\n');
-        builder.append(getEmptyRank());
-        builder.append('\n');
-        builder.append(getRank2());
-        builder.append('\n');
-        builder.append(getEmptyRank());
-        builder.append('\n');
+        //StringBuilder str = new StringBuilder();
+        String str = "";
+        str += StringUtil.appendNewLine(getEmptyRank());
+        str += StringUtil.appendNewLine(getRank7());
+        str += StringUtil.appendNewLine(getEmptyRank());
+        str += StringUtil.appendNewLine(getEmptyRank());
+        str += StringUtil.appendNewLine(getEmptyRank());
+        str += StringUtil.appendNewLine(getEmptyRank());
+        str += StringUtil.appendNewLine(getRank2());
+        str += StringUtil.appendNewLine(getEmptyRank());
 
-        return builder.toString();
+        return str;
     }
 }
