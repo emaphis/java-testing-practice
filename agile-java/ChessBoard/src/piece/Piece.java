@@ -1,7 +1,5 @@
 package piece;
 
-import java.lang.reflect.Array;
-import org.omg.CORBA.CharSeqHelper;
 
 /**
  * Represents a Pawn Piece on a Board of chess.
@@ -9,7 +7,6 @@ import org.omg.CORBA.CharSeqHelper;
  */
 public class Piece {
     private String color;
-    private char representation;
     private String name;
 
     static public final String WHITE = "white";
@@ -21,28 +18,20 @@ public class Piece {
     static public final String ROOK = "Rook";
     static public final String QUEEN = "Queen";
     static public final String KING = "King";
+    static public final String EMPTY = "Empty";
 
     /**
      * Create a Pawn of a given color
      * @param color
      * @param  representation char representation of he board.
      */
-    private Piece(String color, char representation) {
+    private Piece(String color, String name) {
         this.color = color;
-        this.representation = representation;
+        this.name = name;
     }
 
     public static Piece createPiece(String color, String name) {
-        char rep = 'a';
-        if (name.equals(KNIGHT))
-            rep = 'N';
-        else
-            rep = name.charAt(0);
-
-        if (color.equals(WHITE))
-            rep = Character.toLowerCase(rep);
-
-        return new Piece(color, rep);
+        return new Piece(color, name);
     }
 
     /**
@@ -54,6 +43,17 @@ public class Piece {
     }
 
     public char getRepresentation() {
+        char representation = 'a';
+        if (name.equals(KNIGHT))
+            representation = 'N';
+        else if (name.equals(EMPTY))
+            representation = '.';
+        else
+            representation = name.charAt(0);
+
+        if (color.equals(WHITE))
+            representation = Character.toLowerCase(representation);
+
         return representation;
     }
 }

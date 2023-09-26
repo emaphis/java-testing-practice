@@ -23,45 +23,31 @@ public class BoardTest extends TestCase {
 
     public void testCreate() {
         board.initialize();
-        assertEquals("pppppppp", board.getRank2());
-        assertEquals("PPPPPPPP", board.getRank7());
+        assertEquals("pppppppp", board.getRankReresentation(board.rank2));
+        assertEquals("PPPPPPPP", board.getRankReresentation(board.rank7));
     }
 
     public void testIntitalize() {
         assertEquals(0, board.getNumberOfPieces());
         board.initialize();
-        assertEquals(16, board.getNumberOfPieces());
-    }
-
-    public void testPawnsExist() {
-        Board board = new Board();
-        board.initialize();
-
-        // assert 2nd rank
-        for (int i = 0; i < 8; i++) {
-            assertEquals('p', board.getPieceRank2(i).getRepresentation());
-        }
-
-        // assert 7th rank
-        for (int i = 0; i < 8; i++) {
-            assertEquals('P', board.getPieceRank7(i).getRepresentation());
-        }
+        assertEquals(16, board.getNumberOfBoardPieces(Piece.WHITE));
+        assertEquals(16, board.getNumberOfBoardPieces(Piece.BLACK));
+        assertEquals(32, board.getNumberOfPieces());
     }
 
     public void testBoardRepresentaion() {
         board.initialize();
         String given = board.getBoadRepresentation();
+        System.out.println(given);
+
+        String blankLine = StringUtil.appendNewLine("........");
         String expected = "";
-        expected += StringUtil.appendNewLine("........")
+        expected += StringUtil.appendNewLine("RNBQKBNR")
                 + StringUtil.appendNewLine("PPPPPPPP")
-                + StringUtil.appendNewLine("........")
-                + StringUtil.appendNewLine("........")
-                + StringUtil.appendNewLine("........")
-                + StringUtil.appendNewLine("........")
+                + blankLine + blankLine + blankLine + blankLine
                 + StringUtil.appendNewLine("pppppppp")
-                + StringUtil.appendNewLine("........");
+                + StringUtil.appendNewLine("rnbqkbnr");
 
         assertEquals(expected, given);
-        System.out.println(given);
     }
 }

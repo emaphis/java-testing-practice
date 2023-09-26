@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package board;
 
 import piece.Piece;
@@ -16,87 +10,111 @@ import util.StringUtil;
  */
 public class Board {
 
-    private ArrayList<Piece> rank2 = new ArrayList<Piece>();
-    private ArrayList<Piece> rank7 = new ArrayList<Piece>();
+    public ArrayList<Piece> rank1 = new ArrayList<Piece>();
+    public ArrayList<Piece> rank2 = new ArrayList<Piece>();
+    public ArrayList<Piece> rank3 = new ArrayList<Piece>();
+    public ArrayList<Piece> rank4 = new ArrayList<Piece>();
+    public ArrayList<Piece> rank5 = new ArrayList<Piece>();
+    public ArrayList<Piece> rank6 = new ArrayList<Piece>();
+    public ArrayList<Piece> rank7 = new ArrayList<Piece>();
+    public ArrayList<Piece> rank8 = new ArrayList<Piece>();
 
     public void initialize() {
-        // Add 8 white Pawns to rank 2
-        for (int i = 0; i < 8; i++) {
-            addPieceRank2(Piece.createPiece(Piece.WHITE, Piece.PAWN));
-        }
+        addPieceRank(rank1, Piece.WHITE);
+        addPawnRank(rank2, Piece.WHITE);
 
-        // add 8 black Pawns to rank 7
-        for (int i = 0; i < 8; i++) {
-            addPieceRank7(Piece.createPiece(Piece.BLACK, Piece.PAWN));
-        }
+        addBlankRank(rank3);
+        addBlankRank(rank4);
+        addBlankRank(rank5);
+        addBlankRank(rank6);
+
+        addPawnRank(rank7, Piece.BLACK);
+        addPieceRank(rank8, Piece.BLACK);
     }
 
     /**
      * Return number of pieces on the Board.
      * @return
      */
-    int getNumberOfPieces() {
-        return rank2.size() + rank7.size();
+    public int getNumberOfPieces() {
+        return getNumberOfBoardPieces(Piece.WHITE) + getNumberOfBoardPieces(Piece.BLACK);
     }
 
-    /**
-     * Add a Pawn to the Board
-     * @param pawn
-     */
-    private final void addPieceRank2(Piece pawn) {
-        rank2.add(pawn);
+    public int getNumberOfBoardPieces(String color) {
+        int count = 0;
+        count += getNumberOfRankPieces(rank1, color);
+        count += getNumberOfRankPieces(rank2, color);
+        count += getNumberOfRankPieces(rank3, color);
+        count += getNumberOfRankPieces(rank4, color);
+        count += getNumberOfRankPieces(rank5, color);
+        count += getNumberOfRankPieces(rank6, color);
+        count += getNumberOfRankPieces(rank7, color);
+        count += getNumberOfRankPieces(rank8, color);
+
+        return count;
     }
 
-    private final void addPieceRank7(Piece pawn) {
-        rank7.add(pawn);
+    private int getNumberOfRankPieces(ArrayList<Piece> rank, String color) {
+        int count = 0;
+        for (int i = 0; i < rank.size(); i++) {
+            if (rank.get(i).getColor().equals(color))
+                count++;
+        }
+        return count;
     }
 
+    private void addBlankRank(ArrayList<Piece> rank) {
+        for (int i = 0; i < 8; i++) {
+            rank.add(Piece.createPiece(Piece.EMPTY, Piece.EMPTY));
+        }
+    }
+
+    private void addPawnRank(ArrayList<Piece> rank, String color) {
+        for (int i = 0; i < 8; i++) {
+            rank.add(Piece.createPiece(color, Piece.PAWN));
+        }
+    }
+
+    private void addPieceRank(ArrayList<Piece> rank, String color) {
+        rank.add(Piece.createPiece(color, Piece.ROOK));
+        rank.add(Piece.createPiece(color, Piece.KNIGHT));
+        rank.add(Piece.createPiece(color, Piece.BISHOP));
+        rank.add(Piece.createPiece(color, Piece.QUEEN));
+        rank.add(Piece.createPiece(color, Piece.KING));
+        rank.add(Piece.createPiece(color, Piece.BISHOP));
+        rank.add(Piece.createPiece(color, Piece.KNIGHT));
+        rank.add(Piece.createPiece(color, Piece.ROOK));
+    }
     /**
      * Return the Piece at the given index
-     * @param i
+     * @param rank rank holding pieces.
+     * @param idx index in the rank
      * @return
      */
-    public Piece getPieceRank2(int idx) {
-        return rank2.get(idx);
+    public Piece getPieceRank(ArrayList<Piece> rank, int idx) {
+        return rank.get(idx);
     }
 
-    public Piece getPieceRank7(int idx) {
-        return rank7.get(idx);
-    }
-
-    public String getRank2() {
+    public String getRankReresentation(ArrayList<Piece> rank) {
         StringBuilder builder = new StringBuilder();
-        for (int i = 0; i < rank2.size(); i++) {
-            Piece pawn = rank2.get(i);
-            builder.append(pawn.getRepresentation());
+        for (int i = 0; i < rank.size(); i++) {
+            Piece p = rank.get(i);
+            builder.append(p.getRepresentation());
         }
         return builder.toString();
-    }
-
-    public String getRank7() {
-        StringBuilder builder = new StringBuilder();
-        for (int i = 0; i < rank7.size(); i++) {
-            Piece pawn = rank7.get(i);
-            builder.append(pawn.getRepresentation());
-        }
-        return builder.toString();
-    }
-
-    public String getEmptyRank() {
-        return "........";
     }
 
     public String getBoadRepresentation() {
         //StringBuilder str = new StringBuilder();
         String str = "";
-        str += StringUtil.appendNewLine(getEmptyRank());
-        str += StringUtil.appendNewLine(getRank7());
-        str += StringUtil.appendNewLine(getEmptyRank());
-        str += StringUtil.appendNewLine(getEmptyRank());
-        str += StringUtil.appendNewLine(getEmptyRank());
-        str += StringUtil.appendNewLine(getEmptyRank());
-        str += StringUtil.appendNewLine(getRank2());
-        str += StringUtil.appendNewLine(getEmptyRank());
+        str += StringUtil.appendNewLine(getRankReresentation(rank8));
+        str += StringUtil.appendNewLine(getRankReresentation(rank7));
+        str += StringUtil.appendNewLine(getRankReresentation(rank6));
+        str += StringUtil.appendNewLine(getRankReresentation(rank5));
+        str += StringUtil.appendNewLine(getRankReresentation(rank4));
+        str += StringUtil.appendNewLine(getRankReresentation(rank3));
+        str += StringUtil.appendNewLine(getRankReresentation(rank2));
+        str += StringUtil.appendNewLine(getRankReresentation(rank1));
 
         return str;
     }

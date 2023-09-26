@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package piece;
 
 import junit.framework.TestCase;
@@ -14,6 +8,7 @@ import junit.framework.TestCase;
  */
 public class PieceTest extends TestCase {
 
+    @Override
     protected void setUp() throws Exception {
     }
 
