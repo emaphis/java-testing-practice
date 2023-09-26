@@ -6,11 +6,10 @@ package piece;
  * @author emaph
  */
 public class Piece {
-    private String color;
+    private Color color;
     private String name;
 
-    static public final String WHITE = "white";
-    static public final String BLACK = "black";
+    public enum Color { WHITE, BLACK, BLANK };
 
     static public final String PAWN = "Pawn";
     static public final String KNIGHT = "Knight";
@@ -25,12 +24,12 @@ public class Piece {
      * @param color
      * @param  representation char representation of he board.
      */
-    private Piece(String color, String name) {
+    private Piece(Color color, String name) {
         this.color = color;
         this.name = name;
     }
 
-    public static Piece createPiece(String color, String name) {
+    public static Piece createPiece(Color color, String name) {
         return new Piece(color, name);
     }
 
@@ -38,7 +37,7 @@ public class Piece {
      * Get Pawn's color
      * @return
      */
-    public String getColor() {
+    public Color getColor() {
         return color;
     }
 
@@ -51,7 +50,7 @@ public class Piece {
         else
             representation = name.charAt(0);
 
-        if (color.equals(WHITE))
+        if (color.equals(Color.WHITE))
             representation = Character.toLowerCase(representation);
 
         return representation;

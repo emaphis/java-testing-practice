@@ -30,8 +30,8 @@ public class BoardTest extends TestCase {
     public void testIntitalize() {
         assertEquals(0, board.getNumberOfPieces());
         board.initialize();
-        assertEquals(16, board.getNumberOfBoardPieces(Piece.WHITE));
-        assertEquals(16, board.getNumberOfBoardPieces(Piece.BLACK));
+        assertEquals(16, board.getNumberOfBoardPieces(Piece.Color.WHITE));
+        assertEquals(16, board.getNumberOfBoardPieces(Piece.Color.BLACK));
         assertEquals(32, board.getNumberOfPieces());
     }
 

@@ -13,21 +13,21 @@ public class PieceTest extends TestCase {
     }
 
     public void testCreate() {
-        Piece whitePawn = Piece.createPiece(Piece.WHITE, Piece.PAWN);
-        assertEquals(Piece.WHITE, whitePawn.getColor());
+        Piece whitePawn = Piece.createPiece(Piece.Color.WHITE, Piece.PAWN);
+        assertEquals(Piece.Color.WHITE, whitePawn.getColor());
 
-        Piece blackPawn = Piece.createPiece(Piece.BLACK, Piece.PAWN);
-        assertEquals(Piece.BLACK, blackPawn.getColor());
+        Piece blackPawn = Piece.createPiece(Piece.Color.BLACK, Piece.PAWN);
+        assertEquals(Piece.Color.BLACK, blackPawn.getColor());
     }
 
     public void testPawn() {
-        Piece pawn = Piece.createPiece(Piece.WHITE, Piece.PAWN);
-        assertEquals(Piece.WHITE, pawn.getColor());
+        Piece pawn = Piece.createPiece(Piece.Color.WHITE, Piece.PAWN);
+        assertEquals(Piece.Color.WHITE, pawn.getColor());
     }
 
     public void testPawnPrintRepresentation() {
-        Piece whitePawn = Piece.createPiece(Piece.WHITE, Piece.PAWN);
-        Piece blackPawn = Piece.createPiece(Piece.BLACK, Piece.PAWN);
+        Piece whitePawn = Piece.createPiece(Piece.Color.WHITE, Piece.PAWN);
+        Piece blackPawn = Piece.createPiece(Piece.Color.BLACK, Piece.PAWN);
         assertEquals('P', blackPawn.getRepresentation());
         assertEquals('p', whitePawn.getRepresentation());
     }

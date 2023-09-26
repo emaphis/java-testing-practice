@@ -20,16 +20,16 @@ public class Board {
     public ArrayList<Piece> rank8 = new ArrayList<Piece>();
 
     public void initialize() {
-        addPieceRank(rank1, Piece.WHITE);
-        addPawnRank(rank2, Piece.WHITE);
+        addPieceRank(rank1, Piece.Color.WHITE);
+        addPawnRank(rank2, Piece.Color.WHITE);
 
         addBlankRank(rank3);
         addBlankRank(rank4);
         addBlankRank(rank5);
         addBlankRank(rank6);
 
-        addPawnRank(rank7, Piece.BLACK);
-        addPieceRank(rank8, Piece.BLACK);
+        addPawnRank(rank7, Piece.Color.BLACK);
+        addPieceRank(rank8, Piece.Color.BLACK);
     }
 
     /**
@@ -37,10 +37,10 @@ public class Board {
      * @return
      */
     public int getNumberOfPieces() {
-        return getNumberOfBoardPieces(Piece.WHITE) + getNumberOfBoardPieces(Piece.BLACK);
+        return getNumberOfBoardPieces(Piece.Color.WHITE) + getNumberOfBoardPieces(Piece.Color.BLACK);
     }
 
-    public int getNumberOfBoardPieces(String color) {
+    public int getNumberOfBoardPieces(Piece.Color color) {
         int count = 0;
         count += getNumberOfRankPieces(rank1, color);
         count += getNumberOfRankPieces(rank2, color);
@@ -54,7 +54,7 @@ public class Board {
         return count;
     }
 
-    private int getNumberOfRankPieces(ArrayList<Piece> rank, String color) {
+    private int getNumberOfRankPieces(ArrayList<Piece> rank, Piece.Color color) {
         int count = 0;
         for (int i = 0; i < rank.size(); i++) {
             if (rank.get(i).getColor().equals(color))
@@ -65,17 +65,17 @@ public class Board {
 
     private void addBlankRank(ArrayList<Piece> rank) {
         for (int i = 0; i < 8; i++) {
-            rank.add(Piece.createPiece(Piece.EMPTY, Piece.EMPTY));
+            rank.add(Piece.createPiece(Piece.Color.BLANK, Piece.EMPTY));
         }
     }
 
-    private void addPawnRank(ArrayList<Piece> rank, String color) {
+    private void addPawnRank(ArrayList<Piece> rank, Piece.Color color) {
         for (int i = 0; i < 8; i++) {
             rank.add(Piece.createPiece(color, Piece.PAWN));
         }
     }
 
-    private void addPieceRank(ArrayList<Piece> rank, String color) {
+    private void addPieceRank(ArrayList<Piece> rank, Piece.Color color) {
         rank.add(Piece.createPiece(color, Piece.ROOK));
         rank.add(Piece.createPiece(color, Piece.KNIGHT));
         rank.add(Piece.createPiece(color, Piece.BISHOP));

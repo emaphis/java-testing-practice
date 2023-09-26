@@ -101,7 +101,6 @@ public class StudentTest extends TestCase {
         return student;
     }
 
-
     public void assertGpa(Student student, double expectedGpa) {
         assertEquals(expectedGpa, student.getGpa(), GRADE_TOLERANCE);
     }
