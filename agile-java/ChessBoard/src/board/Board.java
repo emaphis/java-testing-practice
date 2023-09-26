@@ -20,16 +20,16 @@ public class Board {
     public ArrayList<Piece> rank8 = new ArrayList<Piece>();
 
     public void initialize() {
-        addPieceRank(rank1, Piece.Color.WHITE);
-        addPawnRank(rank2, Piece.Color.WHITE);
+        addWhitePieceRank(rank1);
+        addWhitePawnRank(rank2);
 
         addBlankRank(rank3);
         addBlankRank(rank4);
         addBlankRank(rank5);
         addBlankRank(rank6);
 
-        addPawnRank(rank7, Piece.Color.BLACK);
-        addPieceRank(rank8, Piece.Color.BLACK);
+        addBlackPawnRank(rank7);
+        addBlackPieceRank(rank8);
     }
 
     /**
@@ -65,26 +65,45 @@ public class Board {
 
     private void addBlankRank(ArrayList<Piece> rank) {
         for (int i = 0; i < 8; i++) {
-            rank.add(Piece.createPiece(Piece.Color.BLANK, Piece.Type.EMPTY));
+            rank.add(Piece.createEmptySpace());
         }
     }
 
-    private void addPawnRank(ArrayList<Piece> rank, Piece.Color color) {
+    private void addWhitePawnRank(ArrayList<Piece> rank) {
         for (int i = 0; i < 8; i++) {
-            rank.add(Piece.createPiece(color, Piece.Type.PAWN));
+            rank.add(Piece.createWhitePawn());
         }
     }
 
-    private void addPieceRank(ArrayList<Piece> rank, Piece.Color color) {
-        rank.add(Piece.createPiece(color, Piece.Type.ROOK));
-        rank.add(Piece.createPiece(color, Piece.Type.KNIGHT));
-        rank.add(Piece.createPiece(color, Piece.Type.BISHOP));
-        rank.add(Piece.createPiece(color, Piece.Type.QUEEN));
-        rank.add(Piece.createPiece(color, Piece.Type.KING));
-        rank.add(Piece.createPiece(color, Piece.Type.BISHOP));
-        rank.add(Piece.createPiece(color, Piece.Type.KNIGHT));
-        rank.add(Piece.createPiece(color, Piece.Type.ROOK));
+    private void addBlackPawnRank(ArrayList<Piece> rank) {
+        for (int i = 0; i < 8; i++) {
+            rank.add(Piece.createBlackPawn());
+        }
     }
+
+    private void addWhitePieceRank(ArrayList<Piece> rank) {
+        rank.add(Piece.createWhiteRook());
+        rank.add(Piece.createWhiteKnight());
+        rank.add(Piece.createWhiteBishop());
+        rank.add(Piece.createWhiteQueen());
+        rank.add(Piece.createWhiteKing());
+        rank.add(Piece.createWhiteBishop());
+        rank.add(Piece.createWhiteKnight());
+        rank.add(Piece.createWhiteRook());
+    }
+
+
+    private void addBlackPieceRank(ArrayList<Piece> rank) {
+        rank.add(Piece.createBlackRook());
+        rank.add(Piece.createBlackKnight());
+        rank.add(Piece.createBlackBishop());
+        rank.add(Piece.createBlackQueen());
+        rank.add(Piece.createBlackKing());
+        rank.add(Piece.createBlackBishop());
+        rank.add(Piece.createBlackKnight());
+        rank.add(Piece.createBlackRook());
+    }
+
     /**
      * Return the Piece at the given index
      * @param rank rank holding pieces.
