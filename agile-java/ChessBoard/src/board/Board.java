@@ -65,25 +65,25 @@ public class Board {
 
     private void addBlankRank(ArrayList<Piece> rank) {
         for (int i = 0; i < 8; i++) {
-            rank.add(Piece.createPiece(Piece.Color.BLANK, Piece.EMPTY));
+            rank.add(Piece.createPiece(Piece.Color.BLANK, Piece.Type.EMPTY));
         }
     }
 
     private void addPawnRank(ArrayList<Piece> rank, Piece.Color color) {
         for (int i = 0; i < 8; i++) {
-            rank.add(Piece.createPiece(color, Piece.PAWN));
+            rank.add(Piece.createPiece(color, Piece.Type.PAWN));
         }
     }
 
     private void addPieceRank(ArrayList<Piece> rank, Piece.Color color) {
-        rank.add(Piece.createPiece(color, Piece.ROOK));
-        rank.add(Piece.createPiece(color, Piece.KNIGHT));
-        rank.add(Piece.createPiece(color, Piece.BISHOP));
-        rank.add(Piece.createPiece(color, Piece.QUEEN));
-        rank.add(Piece.createPiece(color, Piece.KING));
-        rank.add(Piece.createPiece(color, Piece.BISHOP));
-        rank.add(Piece.createPiece(color, Piece.KNIGHT));
-        rank.add(Piece.createPiece(color, Piece.ROOK));
+        rank.add(Piece.createPiece(color, Piece.Type.ROOK));
+        rank.add(Piece.createPiece(color, Piece.Type.KNIGHT));
+        rank.add(Piece.createPiece(color, Piece.Type.BISHOP));
+        rank.add(Piece.createPiece(color, Piece.Type.QUEEN));
+        rank.add(Piece.createPiece(color, Piece.Type.KING));
+        rank.add(Piece.createPiece(color, Piece.Type.BISHOP));
+        rank.add(Piece.createPiece(color, Piece.Type.KNIGHT));
+        rank.add(Piece.createPiece(color, Piece.Type.ROOK));
     }
     /**
      * Return the Piece at the given index
