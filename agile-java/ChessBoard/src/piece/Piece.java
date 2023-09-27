@@ -1,6 +1,5 @@
 package piece;
 
-import javax.accessibility.AccessibleState;
 
 
 /**
@@ -11,7 +10,7 @@ public class Piece {
     private final Color color;
     private final Type type;
 
-    public enum Color { WHITE, BLACK, BLANK };
+    public enum Color { WHITE, BLACK, NONE };
 
     public enum Type { PAWN, KNIGHT, BISHOP, ROOK, QUEEN, KING, NO_PIECE };
 
@@ -90,7 +89,7 @@ public class Piece {
     }
 
     public static Piece noPiece() {
-        return new Piece(Color.BLANK, Type.NO_PIECE);
+        return new Piece(Color.NONE, Type.NO_PIECE);
     }
 
     public final String getName() {
@@ -145,8 +144,8 @@ public class Piece {
         return color == Color.BLACK;
     }
 
-    public boolean isEmpty() {
-        return color == Color.BLANK;
+    public boolean isNone() {
+        return color == Color.NONE;
     }
 
     public Type getType() {

@@ -124,7 +124,6 @@ public class Board {
     }
 
     public String getBoadRepresentation() {
-        //StringBuilder str = new StringBuilder();
         String str = "";
         str += StringUtil.appendNewLine(getRankReresentation(rank8));
         str += StringUtil.appendNewLine(getRankReresentation(rank7));
@@ -177,7 +176,7 @@ public class Board {
             if (rep == Piece.KING_REPRESENTATION)
                 piece = Piece.createWhiteKing();
         }
-        System.out.println();  // kill e
+
         return piece;
     }
 
@@ -204,5 +203,58 @@ public class Board {
                 rank1.add(getPieceFromRepresentation(rep));
             }
         }
+    }
+
+    /**
+     * Return count of particulate piece on the board.
+     * @param color
+     * @param representation
+     * @return
+     */
+    public int countPiece(Piece.Color color, char representation) {
+        int count = 0;
+        count += countPieceRank(rank8, color, representation);
+        count += countPieceRank(rank7, color, representation);
+        count += countPieceRank(rank6, color, representation);
+        count += countPieceRank(rank5, color, representation);
+        count += countPieceRank(rank4, color, representation);
+        count += countPieceRank(rank3, color, representation);
+        count += countPieceRank(rank2, color, representation);
+        count += countPieceRank(rank1, color, representation);
+
+        return count;
+    }
+
+    private int countPieceRank(ArrayList<Piece> rank, Piece.Color color, final char representation) {
+        int count = 0;
+        for (Piece piece : rank) {
+            Piece.Color pieceColor = piece.getColor();
+            if (pieceColor == color) {
+                char pieceRep = piece.getRepresentation();
+                if (pieceColor == Piece.Color.BLACK)
+                    pieceRep = Character.toLowerCase(pieceRep);
+
+                if (pieceRep == representation)
+                    count++;
+            }
+        }
+        return count;
+    }
+
+    /**
+     * Get Board Size.
+     * @return
+     */
+     public int getSize() {
+        int count = 0;
+        count += rank8.size();
+        count += rank7.size();
+        count += rank6.size();
+        count += rank5.size();
+        count += rank4.size();
+        count += rank3.size();
+        count += rank2.size();
+        count += rank1.size();
+        return count;
     }
 }
