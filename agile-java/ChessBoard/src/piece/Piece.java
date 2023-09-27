@@ -23,13 +23,13 @@ public class Piece {
     static public final String KING_STR = "King";
     static public final String EMPTY_STR = "Empty";
 
-    static char PAWN_REPRESENTATION = 'p';
-    static char ROOK_REPRESENTATION = 'r';
-    static char KNIGHT_REPRESENTATION = 'n';
-    static char BISHOP_REPRESENTATION = 'b';
-    static char QUEEN_REPRESENTATION = 'q';
-    static char KING_REPRESENTATION = 'k';
-    static char EMPTY_REPRESENTATION = '.';
+    static public char PAWN_REPRESENTATION = 'p';
+    static public char ROOK_REPRESENTATION = 'r';
+    static public char KNIGHT_REPRESENTATION = 'n';
+    static public char BISHOP_REPRESENTATION = 'b';
+    static public char QUEEN_REPRESENTATION = 'q';
+    static public char KING_REPRESENTATION = 'k';
+    static public char EMPTY_REPRESENTATION = '.';
 
     /**
      * Create a Pawn of a given color
@@ -151,5 +151,13 @@ public class Piece {
 
     public Type getType() {
         return type;
+    }
+
+    public static boolean isRepresentationBlack(char rep) {
+        return Character.isUpperCase(rep);
+    }
+
+    public static boolean isRepresentationWhite(char rep) {
+        return Character.isLowerCase(rep);
     }
 }

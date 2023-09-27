@@ -137,4 +137,72 @@ public class Board {
 
         return str;
     }
+
+    public void printBoard() {
+        String rep = getBoadRepresentation();
+        System.out.println(rep);
+        System.out.println();
+    }
+
+    public Piece getPieceFromRepresentation(char rep) {
+        Piece piece = Piece.noPiece();
+        if (rep == Piece.EMPTY_REPRESENTATION)
+            return piece;
+
+        if (Piece.isRepresentationBlack(rep)) {  // Black pieces
+            rep = Character.toLowerCase(rep);
+            if (rep == Piece.PAWN_REPRESENTATION)
+                piece = Piece.createBlackPawn();
+            if (rep == Piece.BISHOP_REPRESENTATION)
+                piece = Piece.createBlackBishop();
+            if (rep == Piece.KNIGHT_REPRESENTATION)
+                piece = Piece.createBlackKnight();
+            if (rep == Piece.ROOK_REPRESENTATION)
+                piece = Piece.createBlackRook();
+            if (rep == Piece.QUEEN_REPRESENTATION)
+                piece = Piece.createBlackQueen();
+            if (rep == Piece.KING_REPRESENTATION)
+                piece = Piece.createBlackKing();
+        } else {
+            if (rep == Piece.PAWN_REPRESENTATION)
+                piece = Piece.createWhitePawn();
+            if (rep == Piece.BISHOP_REPRESENTATION)
+                piece = Piece.createWhiteBishop();
+            if (rep == Piece.KNIGHT_REPRESENTATION)
+                piece = Piece.createWhiteKnight();
+            if (rep == Piece.ROOK_REPRESENTATION)
+                piece = Piece.createWhiteRook();
+            if (rep == Piece.QUEEN_REPRESENTATION)
+                piece = Piece.createWhiteQueen();
+            if (rep == Piece.KING_REPRESENTATION)
+                piece = Piece.createWhiteKing();
+        }
+        System.out.println();  // kill e
+        return piece;
+    }
+
+    public void readBoard(String brd) {
+
+        for (int i = 0; i < 64; i++) {
+            char rep = brd.charAt(i);
+
+            if (i < 8) {
+                rank8.add(getPieceFromRepresentation(rep));
+            } else if (i >= 8 && i < 16) {
+                rank7.add(getPieceFromRepresentation(rep));
+            } else if (i >= 16 && i < 24) {
+                rank6.add(getPieceFromRepresentation(rep));
+            } else if (i >= 24 && i < 32) {
+                rank5.add(getPieceFromRepresentation(rep));
+            } else if (i >= 32 && i < 40) {
+                rank4.add(getPieceFromRepresentation(rep));
+            } else if (i >= 40 && i < 48) {
+                rank3.add(getPieceFromRepresentation(rep));
+            } else if (i >= 48 && i < 56) {
+                rank2.add(getPieceFromRepresentation(rep));
+            } else if (i >= 56 && i < 64) {
+                rank1.add(getPieceFromRepresentation(rep));
+            }
+        }
+    }
 }

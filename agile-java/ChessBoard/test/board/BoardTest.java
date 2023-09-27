@@ -38,7 +38,7 @@ public class BoardTest extends TestCase {
     public void testBoardRepresentaion() {
         board.initialize();
         String given = board.getBoadRepresentation();
-        System.out.println(given);
+        board.printBoard();
 
         String blankLine = StringUtil.appendNewLine("........");
         String expected = "";
@@ -49,5 +49,21 @@ public class BoardTest extends TestCase {
                 + StringUtil.appendNewLine("rnbqkbnr");
 
         assertEquals(expected, given);
+    }
+
+    public void testReadBoard() {
+        String brd =
+                ".KR....." +
+                "P.PB...." +
+                ".P..Q..." +
+                "........" +
+                ".....nq." +
+                ".....p.." +
+                "......p." +
+                "....rk..";
+
+        Board board1 = new Board();
+        board1.readBoard(brd);
+        //board1.printBoard();
     }
 }
