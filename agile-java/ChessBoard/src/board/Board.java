@@ -65,7 +65,7 @@ public class Board {
 
     private void addBlankRank(ArrayList<Piece> rank) {
         for (int i = 0; i < 8; i++) {
-            rank.add(Piece.createEmptySpace());
+            rank.add(Piece.noPiece());
         }
     }
 

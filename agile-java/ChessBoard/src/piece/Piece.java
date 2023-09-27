@@ -1,5 +1,7 @@
 package piece;
 
+import javax.accessibility.AccessibleState;
+
 
 /**
  * Represents a Pawn Piece on a Board of chess.
@@ -11,7 +13,7 @@ public class Piece {
 
     public enum Color { WHITE, BLACK, BLANK };
 
-    public enum Type { PAWN, KNIGHT, BISHOP, ROOK, QUEEN, KING, EMPTY };
+    public enum Type { PAWN, KNIGHT, BISHOP, ROOK, QUEEN, KING, NO_PIECE };
 
     static public final String PAWN_STR = "Pawn";
     static public final String KNIGHT_STR = "Knight";
@@ -20,6 +22,14 @@ public class Piece {
     static public final String QUEEN_STE = "Queen";
     static public final String KING_STR = "King";
     static public final String EMPTY_STR = "Empty";
+
+    static char PAWN_REPRESENTATION = 'p';
+    static char ROOK_REPRESENTATION = 'r';
+    static char KNIGHT_REPRESENTATION = 'n';
+    static char BISHOP_REPRESENTATION = 'b';
+    static char QUEEN_REPRESENTATION = 'q';
+    static char KING_REPRESENTATION = 'k';
+    static char EMPTY_REPRESENTATION = '.';
 
     /**
      * Create a Pawn of a given color
@@ -79,8 +89,8 @@ public class Piece {
         return new Piece(Color.BLACK, Type.KING);
     }
 
-    public static Piece createEmptySpace() {
-        return new Piece(Color.BLANK, Type.EMPTY);
+    public static Piece noPiece() {
+        return new Piece(Color.BLANK, Type.NO_PIECE);
     }
 
     public final String getName() {
@@ -90,7 +100,7 @@ public class Piece {
         if (type == Type.ROOK)  return ROOK_STR;
         if (type == Type.QUEEN)  return QUEEN_STE;
         if (type == Type.KING) return KING_STR;
-        if (type == Type.EMPTY) return EMPTY_STR;
+        if (type == Type.NO_PIECE) return EMPTY_STR;
         return "ERROR";
     }
 
@@ -103,17 +113,43 @@ public class Piece {
     }
 
     public char getRepresentation() {
-        char representation;
-        if (type.equals(Type.KNIGHT))
-            representation = 'N';
-        else if (type.equals(Type.EMPTY))
-            representation = '.';
-        else
-            representation = this.getName().charAt(0);
+        if (type.equals(Type.NO_PIECE))
+            return EMPTY_REPRESENTATION;
 
-        if (color.equals(Color.WHITE))
-            representation = Character.toLowerCase(representation);
+        char representation = ' ';
+
+        if (type.equals(Type.PAWN))
+            representation = PAWN_REPRESENTATION;
+        else if (type.equals(Type.KNIGHT))
+            representation = KNIGHT_REPRESENTATION;
+        else if (type.equals(Type.BISHOP))
+            representation = BISHOP_REPRESENTATION;
+        else if (type.equals(Type.ROOK))
+            representation = ROOK_REPRESENTATION;
+        else if (type.equals(Type.QUEEN))
+            representation = QUEEN_REPRESENTATION;
+        else if (type.equals(Type.KING))
+            representation = KING_REPRESENTATION;
+
+        if (color == Color.BLACK)
+            representation = Character.toUpperCase(representation);
 
         return representation;
+    }
+
+    public boolean isWhite() {
+        return color == Color.WHITE;
+    }
+
+    public boolean isBlack() {
+        return color == Color.BLACK;
+    }
+
+    public boolean isEmpty() {
+        return color == Color.BLANK;
+    }
+
+    public Type getType() {
+        return type;
     }
 }

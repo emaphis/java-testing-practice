@@ -13,16 +13,33 @@ public class PieceTest extends TestCase {
     }
 
     public void testCreate() {
-        Piece whitePawn = Piece.createWhitePawn();
-        assertEquals(Piece.Color.WHITE, whitePawn.getColor());
-
-        Piece blackPawn = Piece.createBlackPawn();
-        assertEquals(Piece.Color.BLACK, blackPawn.getColor());
+        verifyCreation(Piece.createWhitePawn(), Piece.createBlackPawn(),
+                Piece.Type.PAWN, Piece.PAWN_REPRESENTATION);
+        verifyCreation(Piece.createWhiteRook(), Piece.createBlackRook(),
+                Piece.Type.ROOK, Piece.ROOK_REPRESENTATION);
+        verifyCreation(Piece.createWhiteKnight(), Piece.createBlackKnight(),
+                Piece.Type.KNIGHT, Piece.KNIGHT_REPRESENTATION);
+        verifyCreation(Piece.createWhiteBishop(), Piece.createBlackBishop(),
+                Piece.Type.BISHOP, Piece.BISHOP_REPRESENTATION);
+        verifyCreation(Piece.createWhiteQueen(), Piece.createBlackQueen(),
+                Piece.Type.QUEEN, Piece.QUEEN_REPRESENTATION);
+        verifyCreation(Piece.createWhiteKing(), Piece.createBlackKing(),
+                Piece.Type.KING, Piece.KING_REPRESENTATION);
     }
 
-    public void testPawn() {
-        Piece pawn = Piece.createWhitePawn();
-        assertEquals(Piece.Color.WHITE, pawn.getColor());
+    private void verifyCreation(Piece whitePiece, Piece blackPiece,
+        Piece.Type type, char representation) {
+        assertTrue(whitePiece.isWhite());
+        assertEquals(type, whitePiece.getType());
+        assertEquals(representation, whitePiece.getRepresentation());
+        assertTrue(blackPiece.isBlack());
+        assertEquals(type, blackPiece.getType());
+        assertEquals(Character.toUpperCase(representation),
+        blackPiece.getRepresentation());
+
+        Piece blank = Piece.noPiece();
+        assertEquals('.', blank.getRepresentation());
+        assertEquals(Piece.Type.NO_PIECE, blank.getType());
     }
 
     public void testPawnPrintRepresentation() {
