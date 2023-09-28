@@ -20,16 +20,16 @@ public class Board {
     public ArrayList<Piece> rank8 = new ArrayList<Piece>();
 
     public void initialize() {
-        addWhitePieceRank(rank1);
-        addWhitePawnRank(rank2);
+        addPieceRank(rank1, Piece.Color.WHITE);
+        addPawnRank(rank2, Piece.Color.WHITE);
 
         addBlankRank(rank3);
         addBlankRank(rank4);
         addBlankRank(rank5);
         addBlankRank(rank6);
 
-        addBlackPawnRank(rank7);
-        addBlackPieceRank(rank8);
+        addPawnRank(rank7, Piece.Color.BLACK);
+        addPieceRank(rank8, Piece.Color.BLACK);
     }
 
     /**
@@ -69,39 +69,21 @@ public class Board {
         }
     }
 
-    private void addWhitePawnRank(ArrayList<Piece> rank) {
+    private void addPawnRank(ArrayList<Piece> rank, Piece.Color color) {
         for (int i = 0; i < 8; i++) {
-            rank.add(Piece.createWhitePawn());
+            rank.add(Piece.createPawn(color));
         }
     }
 
-    private void addBlackPawnRank(ArrayList<Piece> rank) {
-        for (int i = 0; i < 8; i++) {
-            rank.add(Piece.createBlackPawn());
-        }
-    }
-
-    private void addWhitePieceRank(ArrayList<Piece> rank) {
-        rank.add(Piece.createWhiteRook());
-        rank.add(Piece.createWhiteKnight());
-        rank.add(Piece.createWhiteBishop());
-        rank.add(Piece.createWhiteQueen());
-        rank.add(Piece.createWhiteKing());
-        rank.add(Piece.createWhiteBishop());
-        rank.add(Piece.createWhiteKnight());
-        rank.add(Piece.createWhiteRook());
-    }
-
-
-    private void addBlackPieceRank(ArrayList<Piece> rank) {
-        rank.add(Piece.createBlackRook());
-        rank.add(Piece.createBlackKnight());
-        rank.add(Piece.createBlackBishop());
-        rank.add(Piece.createBlackQueen());
-        rank.add(Piece.createBlackKing());
-        rank.add(Piece.createBlackBishop());
-        rank.add(Piece.createBlackKnight());
-        rank.add(Piece.createBlackRook());
+    private void addPieceRank(ArrayList<Piece> rank, Piece.Color color) {
+        rank.add(Piece.createRook(color));
+        rank.add(Piece.createKnight(color));
+        rank.add(Piece.createBishop(color));
+        rank.add(Piece.createQueen(color));
+        rank.add(Piece.createKing(color));
+        rank.add(Piece.createBishop(color));
+        rank.add(Piece.createKnight(color));
+        rank.add(Piece.createRook(color));
     }
 
     /**
@@ -148,34 +130,26 @@ public class Board {
         if (rep == Piece.EMPTY_REPRESENTATION)
             return piece;
 
+        Piece.Color color;
         if (Piece.isRepresentationBlack(rep)) {  // Black pieces
             rep = Character.toLowerCase(rep);
-            if (rep == Piece.PAWN_REPRESENTATION)
-                piece = Piece.createBlackPawn();
-            if (rep == Piece.BISHOP_REPRESENTATION)
-                piece = Piece.createBlackBishop();
-            if (rep == Piece.KNIGHT_REPRESENTATION)
-                piece = Piece.createBlackKnight();
-            if (rep == Piece.ROOK_REPRESENTATION)
-                piece = Piece.createBlackRook();
-            if (rep == Piece.QUEEN_REPRESENTATION)
-                piece = Piece.createBlackQueen();
-            if (rep == Piece.KING_REPRESENTATION)
-                piece = Piece.createBlackKing();
+            color = Piece.Color.BLACK;
         } else {
-            if (rep == Piece.PAWN_REPRESENTATION)
-                piece = Piece.createWhitePawn();
-            if (rep == Piece.BISHOP_REPRESENTATION)
-                piece = Piece.createWhiteBishop();
-            if (rep == Piece.KNIGHT_REPRESENTATION)
-                piece = Piece.createWhiteKnight();
-            if (rep == Piece.ROOK_REPRESENTATION)
-                piece = Piece.createWhiteRook();
-            if (rep == Piece.QUEEN_REPRESENTATION)
-                piece = Piece.createWhiteQueen();
-            if (rep == Piece.KING_REPRESENTATION)
-                piece = Piece.createWhiteKing();
+            color = Piece.Color.WHITE;
         }
+
+        if (rep == Piece.PAWN_REPRESENTATION)
+            piece = Piece.createPawn(color);
+        if (rep == Piece.BISHOP_REPRESENTATION)
+            piece = Piece.createBishop(color);
+        if (rep == Piece.KNIGHT_REPRESENTATION)
+            piece = Piece.createKnight(color);
+        if (rep == Piece.ROOK_REPRESENTATION)
+            piece = Piece.createRook(color);
+        if (rep == Piece.QUEEN_REPRESENTATION)
+            piece = Piece.createQueen(color);
+        if (rep == Piece.KING_REPRESENTATION)
+            piece = Piece.createKing(color);
 
         return piece;
     }

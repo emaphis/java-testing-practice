@@ -1,7 +1,5 @@
 package piece;
 
-
-
 /**
  * Represents a Pawn Piece on a Board of chess.
  * @author emaph
@@ -18,7 +16,7 @@ public class Piece {
     static public final String KNIGHT_STR = "Knight";
     static public final String BISHOP_STR = "Bishop";
     static public final String ROOK_STR = "Rook";
-    static public final String QUEEN_STE = "Queen";
+    static public final String QUEEN_STR = "Queen";
     static public final String KING_STR = "King";
     static public final String EMPTY_STR = "Empty";
 
@@ -40,52 +38,28 @@ public class Piece {
         this.type = type;
     }
 
-    public static Piece createWhitePawn() {
-        return new Piece(Color.WHITE, Type.PAWN);
+    public static Piece createPawn(Color color) {
+        return new Piece(color, Type.PAWN);
     }
 
-    public static Piece createBlackPawn() {
-        return new Piece(Color.BLACK, Type.PAWN);
+    public static Piece createKnight(Color color) {
+        return new Piece(color, Type.KNIGHT);
     }
 
-    public static Piece createWhiteKnight() {
-        return new Piece(Color.WHITE, Type.KNIGHT);
+    public static Piece createBishop(Color color) {
+        return new Piece(color, Type.BISHOP);
     }
 
-    public static Piece createBlackKnight() {
-        return new Piece(Color.BLACK, Type.KNIGHT);
+    public static Piece createRook(Color color) {
+        return new Piece(color, Type.ROOK);
     }
 
-    public static Piece createWhiteBishop() {
-        return new Piece(Color.WHITE, Type.BISHOP);
+    public static Piece createQueen(Color color) {
+        return new Piece(color, Type.QUEEN);
     }
 
-    public static Piece createBlackBishop() {
-        return new Piece(Color.BLACK, Type.BISHOP);
-    }
-
-    public static Piece createWhiteRook() {
-        return new Piece(Color.WHITE, Type.ROOK);
-    }
-
-    public static Piece createBlackRook() {
-        return new Piece(Color.BLACK, Type.ROOK);
-    }
-
-    public static Piece createWhiteQueen() {
-        return new Piece(Color.WHITE, Type.QUEEN);
-    }
-
-    public static Piece createBlackQueen() {
-        return new Piece(Color.BLACK, Type.QUEEN);
-    }
-
-    public static Piece createWhiteKing() {
-        return new Piece(Color.WHITE, Type.KING);
-    }
-
-    public static Piece createBlackKing() {
-        return new Piece(Color.BLACK, Type.KING);
+    public static Piece createKing(Color color) {
+        return new Piece(color, Type.KING);
     }
 
     public static Piece noPiece() {
@@ -97,7 +71,7 @@ public class Piece {
         if (type == Type.KNIGHT) return KNIGHT_STR;
         if (type == Type.BISHOP) return BISHOP_STR;
         if (type == Type.ROOK)  return ROOK_STR;
-        if (type == Type.QUEEN)  return QUEEN_STE;
+        if (type == Type.QUEEN)  return QUEEN_STR;
         if (type == Type.KING) return KING_STR;
         if (type == Type.NO_PIECE) return EMPTY_STR;
         return "ERROR";

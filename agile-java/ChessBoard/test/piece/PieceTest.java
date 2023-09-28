@@ -13,17 +13,17 @@ public class PieceTest extends TestCase {
     }
 
     public void testCreate() {
-        verifyCreation(Piece.createWhitePawn(), Piece.createBlackPawn(),
+        verifyCreation(Piece.createPawn(Piece.Color.WHITE), Piece.createPawn(Piece.Color.BLACK),
                 Piece.Type.PAWN, Piece.PAWN_REPRESENTATION);
-        verifyCreation(Piece.createWhiteRook(), Piece.createBlackRook(),
+        verifyCreation(Piece.createRook(Piece.Color.WHITE), Piece.createRook(Piece.Color.BLACK),
                 Piece.Type.ROOK, Piece.ROOK_REPRESENTATION);
-        verifyCreation(Piece.createWhiteKnight(), Piece.createBlackKnight(),
+        verifyCreation(Piece.createKnight(Piece.Color.WHITE), Piece.createKnight(Piece.Color.BLACK),
                 Piece.Type.KNIGHT, Piece.KNIGHT_REPRESENTATION);
-        verifyCreation(Piece.createWhiteBishop(), Piece.createBlackBishop(),
+        verifyCreation(Piece.createBishop(Piece.Color.WHITE), Piece.createBishop(Piece.Color.BLACK),
                 Piece.Type.BISHOP, Piece.BISHOP_REPRESENTATION);
-        verifyCreation(Piece.createWhiteQueen(), Piece.createBlackQueen(),
+        verifyCreation(Piece.createQueen(Piece.Color.WHITE), Piece.createQueen(Piece.Color.BLACK),
                 Piece.Type.QUEEN, Piece.QUEEN_REPRESENTATION);
-        verifyCreation(Piece.createWhiteKing(), Piece.createBlackKing(),
+        verifyCreation(Piece.createKing(Piece.Color.WHITE), Piece.createKing(Piece.Color.BLACK),
                 Piece.Type.KING, Piece.KING_REPRESENTATION);
     }
 
@@ -43,8 +43,8 @@ public class PieceTest extends TestCase {
     }
 
     public void testPawnPrintRepresentation() {
-        Piece whitePawn = Piece.createWhitePawn();
-        Piece blackPawn = Piece.createBlackPawn();
+        Piece whitePawn = Piece.createPawn(Piece.Color.WHITE);
+        Piece blackPawn = Piece.createPawn(Piece.Color.BLACK);
         assertEquals('P', blackPawn.getRepresentation());
         assertEquals('p', whitePawn.getRepresentation());
     }

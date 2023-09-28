@@ -84,7 +84,7 @@ public class BoardTest extends TestCase {
         assertEquals(2, board1.countPiece(Piece.Color.WHITE, Piece.PAWN_REPRESENTATION));
         assertEquals(3, board1.countPiece(Piece.Color.BLACK, Piece.PAWN_REPRESENTATION));
         assertEquals(0, board1.countPiece(Piece.Color.WHITE, Piece.BISHOP_REPRESENTATION));
-        assertEquals(1, + board1.countPiece(Piece.Color.BLACK, Piece.BISHOP_REPRESENTATION));
+        assertEquals(1, board1.countPiece(Piece.Color.BLACK, Piece.BISHOP_REPRESENTATION));
         assertEquals(1, board1.countPiece(Piece.Color.WHITE, Piece.KNIGHT_REPRESENTATION));
         assertEquals(0, board1.countPiece(Piece.Color.BLACK, Piece.KNIGHT_REPRESENTATION));
         assertEquals(1, board1.countPiece(Piece.Color.WHITE, Piece.ROOK_REPRESENTATION));
