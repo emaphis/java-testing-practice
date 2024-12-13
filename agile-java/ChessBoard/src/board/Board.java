@@ -231,4 +231,32 @@ public class Board {
         count += rank1.size();
         return count;
     }
+
+    int switchLabel(char label) {
+        label = Character.toLowerCase(label);
+        return label - 96;
+    }
+
+    // Doesn't need to be public
+    int switchIndex(int index) {
+        return index + 96;
+    }
+
+    public Piece retrievePiece(String location) {
+        int row = location.charAt(0);
+        int col = location.charAt(1);
+
+        Piece piece = Piece.noPiece();
+
+        if (row == 8) piece = getPieceRank(rank8, col);
+        if (row == 7) piece = getPieceRank(rank7, col);
+        if (row == 6) piece = getPieceRank(rank6, col);
+        if (row == 5) piece = getPieceRank(rank5, col);
+        if (row == 4) piece = getPieceRank(rank4, col);
+        if (row == 3) piece = getPieceRank(rank3, col);
+        if (row == 2) piece = getPieceRank(rank2, col);
+        if (row == 1) piece = getPieceRank(rank1, col);
+
+        return  piece;
+    }
 }

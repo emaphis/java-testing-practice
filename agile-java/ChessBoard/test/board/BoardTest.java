@@ -97,4 +97,38 @@ public class BoardTest extends TestCase {
         //sboard1.printBoard();
         assertEquals(64, board1.getSize());
     }
+
+    public void testSwitchLabel() {
+        assertEquals(1, board.switchLabel('a'));
+        assertEquals(2, board.switchLabel('b'));
+        assertEquals(3, board.switchLabel('c'));
+        assertEquals(4, board.switchLabel('d'));
+        assertEquals(5, board.switchLabel('e'));
+        assertEquals(6, board.switchLabel('f'));
+        assertEquals(7, board.switchLabel('g'));
+        assertEquals(8, board.switchLabel('h'));
+    }
+
+    public void testSwitchIndex() {
+        assertEquals('a', board.switchIndex(1));
+        assertEquals('b', board.switchIndex(2));
+        assertEquals('c', board.switchIndex(3));
+        assertEquals('d', board.switchIndex(4));
+        assertEquals('e', board.switchIndex(5));
+        assertEquals('f', board.switchIndex(6));
+        assertEquals('g', board.switchIndex(7));
+        assertEquals('h', board.switchIndex(8));
+    }
+
+    public void testRetrievePiece() {
+        Piece whitePawn = Piece.createPawn(Piece.Color.WHITE); // b2
+        Piece blackPawn = Piece.createPawn(Piece.Color.BLACK); // b7
+        Piece blackRook = Piece.createRook(Piece.Color.BLACK); // a8
+        Piece whiteKing = Piece.createKing(Piece.Color.WHITE); // e1
+
+        assertEquals(whitePawn, board.retrievePiece("b2"));
+        assertEquals(blackPawn, board.retrievePiece("b7"));
+        assertEquals(blackRook, board.retrievePiece("88"));
+        assertEquals(whiteKing, board.retrievePiece("e1"));
+    }
 }
